@@ -1,3 +1,6 @@
+#import "@preview/lilaq:0.3.0" as lq
+// #show: lq.theme.schoolbook // use "schoolbook" themed diagrams
+
 #import "skeleton.typ": *
 
 = 2.20
@@ -32,7 +35,7 @@
 
 #solution[
   $
-    y[n] = sum_(k = 0)^n alpha^k beta^(n - k) = (alpha^(n + 1) - beta^(n + 1))/(alpha - beta).
+    y[n] = sum_(k = -oo)^oo x[n] h[n] = sum_(k = 0)^n alpha^k beta^(n - k) = (alpha^(n + 1) - beta^(n + 1))/(alpha - beta).
   $
 ]
 
@@ -40,24 +43,63 @@
 
 == (c)
 
-= 2.28
+#solution[
+  The desired convolution is
 
-== (c)
+  $
+    y(t) = integral_(-oo)^oo x(tau) h(t - tau) dif tau = integral_0^2 sin(pi tau) h(t - tau) dif tau.
+  $
 
-= 2.29
+  This gives us
 
-== (g)
+  $
+    y(t) = cases(
+      0\, quad & t < 1,
+      2\/pi (1 - cos(pi (t - 1)))\, quad & 1 < t < 3,
+      2\/pi (cos(pi (t - 3)) - 1)\, quad & 3 < t < 5,
+      0\, quad & t > 5
+    )
+  $
 
-= 2.33
+  as shown in the figure below.
 
-= 2.39
+  #figure(
+    lq.diagram({
+      let xs = lq.linspace(1, 5)
 
-== (b)
+      lq.plot(
+        xs,
+        xs.map(t => {
+          if t < 3 {
+            2/calc.pi * (1 - calc.cos(calc.pi * (t - 1)))
+          } else {
+            2/calc.pi * (calc.cos(calc.pi * (t - 3)) - 1)
+          }
+        }),
+        mark: none,
+      )
+    }),
+  )
+]
 
-= 2.47
-
-== (b)
-
-== (d)
-
-== (f)
+// = 2.28
+//
+// == (c)
+//
+// = 2.29
+//
+// == (g)
+//
+// = 2.33
+//
+// = 2.39
+//
+// == (b)
+//
+// = 2.47
+//
+// == (b)
+//
+// == (d)
+//
+// == (f)
