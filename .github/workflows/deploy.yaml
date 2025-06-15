@@ -15,8 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Typst & Compile Files
+      - name: Setup Typst
         uses: typst-community/setup-typst@v4
+
+      - name: Compile Files
         run: |
           git diff --name-only --diff-filter=d ${{ github.event.before }} HEAD | while read -r file; do
             [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file"
