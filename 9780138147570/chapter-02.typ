@@ -1,5 +1,4 @@
 #import "@preview/lilaq:0.3.0" as lq
-// #show: lq.theme.schoolbook // use "schoolbook" themed diagrams
 
 #import "skeleton.typ": *
 
