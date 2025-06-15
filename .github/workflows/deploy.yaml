@@ -1,0 +1,39 @@
+name: Deploy to GitHub Page
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Typst & Compile Files
+        uses: typst-community/setup-typst@v4
+        run: |
+          git diff --name-only --diff-filter=d ${{ github.event.before }} HEAD | while read -r file; do
+            [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file"
+          done
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: . # repo root
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
