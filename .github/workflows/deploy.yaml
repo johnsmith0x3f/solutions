@@ -20,7 +20,8 @@ jobs:
 
       - name: Compile Files
         run: |
-          git diff --name-only --diff-filter=d origin/main HEAD | while read -r file; do
+          git fetch origin ${{ github.event.before }}
+          git diff --name-only --diff-filter=d #{{ github.event.before }} HEAD | while read -r file; do
             [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file"
           done
 
