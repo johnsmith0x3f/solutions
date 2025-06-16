@@ -20,19 +20,15 @@ jobs:
 
       - name: Compile Files
         run: |
-          for file in ${{ github.event.added }}; do
+          for file in ${{ github.event.commits.added }}; do
             [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file" && echo "Compiled $file"
           done
-          for file in ${{ github.event.modified }}; do
+          for file in ${{ github.event.commits.modified }}; do
             [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file" && echo "Compiled $file"
           done
-          for file in ${{ github.event.removed }}; do
+          for file in ${{ github.event.commits.removed }}; do
             [[ ! -f "${file%.*}.pdf" ]] || rm "${file%.*}.pdf" && echo "Removed ${file%.*}.pdf"
           done
-          # git fetch origin ${{ github.event.before }}
-          # git diff --name-only --diff-filter=d #{{ github.event.before }} HEAD | while read -r file; do
-          #   [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file"
-          # done
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
