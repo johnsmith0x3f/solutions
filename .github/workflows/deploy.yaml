@@ -14,20 +14,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+          fetch-depth: 0 # fetch all commits
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
       - name: Compile Files
         run: |
-          for file in ${{ github.event.commits.added }}; do
+          git diff --name-only --diff-filter=d ${{ github.event.before }} HEAD | while read -r file; do
             [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file" && echo "Compiled $file"
-          done
-          for file in ${{ github.event.commits.modified }}; do
-            [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || typst compile "$file" && echo "Compiled $file"
-          done
-          for file in ${{ github.event.commits.removed }}; do
-            [[ ! -f "${file%.*}.pdf" ]] || rm "${file%.*}.pdf" && echo "Removed ${file%.*}.pdf"
           done
 
       - name: Upload Artifacts
