@@ -23,7 +23,7 @@ jobs:
       - name: Compile Files
         run: |
           git diff --name-only --diff-filter=d ${{ github.event.before }} HEAD | while read -r file; do
-            [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || { typst compile "$file" && echo "Compiled $file" }
+            [[ "$file" != *".typ" ]] || [[ "$file" == *"skeleton.typ" ]] || { typst compile "$file" && echo "Compiled $file"; }
           done
 
       - name: Upload Artifacts
