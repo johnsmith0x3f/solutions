@@ -108,6 +108,22 @@
 
 = 2.33
 
+#solution[
+  We may solve this ODE first. Multiplying both sides by $e^(2 t)$, we get
+
+  $
+    dif/(dif t) (e^(2 t) y(t)) = e^(2 t) x(t).
+  $
+
+  Integrating both sides from $t_0$ to $t$ now gives us
+
+  $
+    e^(2 t) y(t) - e^(2 t_0) y(t_0) = integral_(t_0)^t e^(2 tau) x(tau) dif tau.
+  $
+
+  For (a), let $t_0 = 0$. Then the linearity of the system follows from the linearity of the integral. For (b), since $dif t = dif (t - T)$, we can safely replace $t$ with $t - T$ in the above equation without breaking its properties.
+]
+
 = 2.39
 
 == (b)
@@ -137,8 +153,49 @@
 
 = 2.47
 
+#let xs = lq.linspace(-1, 3)
+#let y0(t) = {
+  if t < 0 {
+    0
+  } else if t < 2 {
+    t/2
+  } else {
+    1
+  }
+}
+
 == (b)
+
+#solution[
+  We have
+
+  $
+    y(t) = x(t) * h(t) = x_0(t) * h_0(t) - x_0(t - 2) * h_0(t) = y_0(t) - y_0(t - 2),
+  $
+
+  as shown in the figure below.
+
+  #figure(lq.diagram(lq.plot(xs, xs.map(x => y0(x) - y0(x - 2)), mark: none)))
+]
 
 == (d)
 
+#solution[
+  Not enough information.
+]
+
 == (f)
+
+#solution[
+  We have
+
+  $
+    y(t) = integral_(-oo)^oo (diff x)/(diff t)(tau) (diff h)/(diff t)(t - tau) dif tau = (dif^2)/(dif t^2) (integral_(-oo)^oo x(tau) h(t - tau) dif tau) = (dif^2)/(dif t^2) y(t).
+  $
+
+  as shown in the figure below.
+
+  #figure(
+    lq.diagram(lq.stem((0, 2), (1/2, -1/2), base-stroke: black)),
+  )
+]
