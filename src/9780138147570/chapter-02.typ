@@ -1,5 +1,6 @@
 #import "@local/skeleton:0.1.0": *
 
+#import "@preview/fletcher:0.5.8" as fl
 #import "@preview/lilaq:0.3.0" as lq
 
 = 2.20
@@ -110,6 +111,29 @@
 = 2.39
 
 == (b)
+
+#solution[
+  The block diagram is as shown in the figure below.
+
+  #figure(
+    fl.diagram({
+      let (A, B, C, D, E, F, G) = ((0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (3, 1), (2, 1))
+
+      fl.node(A, $x(t)$)
+      fl.edge(A, B, "->")
+      fl.node(B, $integral$, stroke: black, shape: rect)
+      fl.edge(B, C, "->")
+      fl.node(C, $+$, stroke: black)
+      fl.edge(C, D)
+      fl.edge(D, E)
+      fl.node(E, $y(t)$)
+      fl.edge(D, F, "->")
+      fl.node(F, $integral$, stroke: black, shape: rect)
+      fl.edge(F, G, label: $-3$)
+      fl.edge(G, C, "->")
+    }),
+  )
+]
 
 = 2.47
 
