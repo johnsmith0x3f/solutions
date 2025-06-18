@@ -86,14 +86,24 @@
 == (c)
 
 #solution[
-  Not causal because $h[n] = 2^n > 0$ for $n < 0$. Unstable because $sum_{n = -oo}^oo h[n] = sum_{n = 0}^oo 2^n = oo$.
+  Not causal because $h[n] = 2^n > 0$ for $n < 0$. Unstable because
+
+  $
+    sum_(n = -oo)^oo h[n] = sum_(n = 0)^oo 2^n = oo.
+  $
 ]
 
 = 2.29
 
 == (g)
 
+#solution[
+  Causal because $h(t) = 0$ for $t < 0$. Unstable because
 
+  $
+    integral_(-oo)^oo |h(tau)| dif tau >= integral_(100)^oo (e^(x/100 - 1) - 1) dif tau = oo.
+  $
+]
 
 = 2.33
 
