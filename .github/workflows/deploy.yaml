@@ -14,27 +14,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # fetch all commits
-
-      - name: Setup Typst
-        uses: typst-community/setup-typst@v4
-
-      - name: Compile Files
-        run: |
-          mkdir -p public
-          git diff --name-only --diff-filter=d ${{ github.event.before }} HEAD | while read -r file; do
-            [[ "$file" == *".typ" ]] || continue
-            [[ "$file" != *"skeleton.typ" ]] || continue
-
-            output="public/${file#*/}" && output="${output%.*}.pdf"
-            typst compile "$file" "$output" && echo "Compiled $file into $output"
-          done
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public # relative to repo root
+          path: pub # relative to repo root
 
   deploy:
     needs: build
