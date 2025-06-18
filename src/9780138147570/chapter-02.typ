@@ -1,6 +1,6 @@
-#import "@preview/lilaq:0.3.0" as lq
+#import "@local/skeleton:0.1.0": *
 
-#import "skeleton.typ": *
+#import "@preview/lilaq:0.3.0" as lq
 
 = 2.20
 
@@ -81,24 +81,30 @@
   )
 ]
 
-// = 2.28
-//
-// == (c)
-//
-// = 2.29
-//
-// == (g)
-//
-// = 2.33
-//
-// = 2.39
-//
-// == (b)
-//
-// = 2.47
-//
-// == (b)
-//
-// == (d)
-//
-// == (f)
+= 2.28
+
+== (c)
+
+#solution[
+  Not causal because $h[n] = 2^n > 0$ for $n < 0$. Unstable because $sum_{n = -oo}^oo h[n] = sum_{n = 0}^oo 2^n = oo$.
+]
+
+= 2.29
+
+== (g)
+
+
+
+= 2.33
+
+= 2.39
+
+== (b)
+
+= 2.47
+
+== (b)
+
+== (d)
+
+== (f)
