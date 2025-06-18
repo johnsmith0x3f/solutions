@@ -7,4 +7,5 @@ clean:
 	rm -fr pub
 
 pub/%.pdf: src/%.typ
-	mkdir -p $(dir $@) && typst compile $< $@
+	@mkdir -p $(dir $@)
+	typst compile $< $@
