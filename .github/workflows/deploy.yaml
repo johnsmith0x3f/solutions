@@ -15,6 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Copy Index Page
+        run: |
+          cp -f src/index.html pub/index.html
+
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
