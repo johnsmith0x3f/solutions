@@ -52,9 +52,53 @@
 
 == (e)
 
+#solution[
+  Let
+
+  $
+    X(s) = (s + 1)/(s^2 + 5 s + 6) = 2/(s + 3) - 1/(s + 2).
+  $
+
+  From the given ROC, we know that $x(t)$ must be a two-sided signal. Therefore,
+
+  $
+    x(t) = 2 e^(-3 t) u(t) + e^(-2 t) u(-t), quad cal(R e){s} > -2.
+  $
+]
+
 = 9.23
 
+The four pole-zero plots shown may have the following possible ROCs:
+
+- Plot 1: $cal(R e){s} < -2$ or $-2 < cal(R e){s} < 2$ or $2 < cal(R e){s}$.
+
+- Plot 2: $cal(R e){s} < -2$ or $-2 < cal(R e){s}$.
+
+- Plot 3: $cal(R e){s} < 2$ or $2 < cal(R e){s}$.
+
+- Plot 4: The entire $s$-plane.
+
+Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
+
 == (1)
+
+#solution[
+  From table 9.1, we know that
+
+  $
+    x(t) e^(-3 t) <-->^cal(L) X(s + 3).
+  $
+
+  The ROC $R_1$ of this new Laplace transform is $R$ shifted to the left by 3. Since $x(t) e^(-3 t)$ is absolutely integrable, $R_1$ must contain the $j omega$ axis.
+
+  - For plot 1, this is possible only if $R$ was $2 < cal(R e){s}$.
+
+  - For plot 2, this is possible only if $R$ was $-2 < cal(R e){s}$.
+
+  - For plot 3, this is possible only if $R$ was $2 < cal(R e){s}$.
+
+  - For plot 4, $R$ is the entire $s$-plane.
+]
 
 = 9.25
 
