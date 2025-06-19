@@ -1,5 +1,8 @@
 #import "@local/skeleton:0.1.0": *
 
+#import "@preview/cetz:0.4.0"
+#import "@preview/cetz-plot:0.1.2"
+
 = 9.21
 
 == (b)
@@ -22,15 +25,15 @@
   Each of these integrals represents a Laplace transform of the type encountered in Example 9.1. It follows that
 
   $
-    e^(4 t) u(t) &<-->^cal(L) 1/(s + 4), quad cal(R e){s} > -4,\
-    e^(-(5 - 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 + 5 j), quad cal(R e){s} > -5,\
-    e^(-(5 + 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 - 5 j), quad cal(R e){s} > -5.
+    e^(4 t) u(t) &<-->^cal(L) 1/(s + 4), wide cal(R e){s} > -4,\
+    e^(-(5 - 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 + 5 j), wide cal(R e){s} > -5,\
+    e^(-(5 + 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 - 5 j), wide cal(R e){s} > -5.
   $
 
   For all three Laplace transforms to converge simultaneously, we must have $cal(R e){s} > -4$. Consequently, the Laplace transform of $x(t)$ is
 
   $
-    X(s) = 1/(s + 4) - j/(2(s - 5 + 5 j)) + j/(2(s - 5 - 5 j)), quad cal(R e){s} > -4.
+    X(s) = 1/(s + 4) - j/(2(s - 5 + 5 j)) + j/(2(s - 5 - 5 j)), wide cal(R e){s} > -4.
   $
 ]
 
@@ -38,7 +41,7 @@
 
 #solution[
   $
-    x(t) = delta(t) + u(t) <-->^cal(L) X(s) = 1 + 1/s, quad cal(R e){s} > 0.
+    x(t) = delta(t) + u(t) <-->^cal(L) X(s) = 1 + 1/s, wide cal(R e){s} > 0.
   $
 ]
 
@@ -62,7 +65,7 @@
   From the given ROC, we know that $x(t)$ must be a two-sided signal. Therefore,
 
   $
-    x(t) = 2 e^(-3 t) u(t) + e^(-2 t) u(-t), quad cal(R e){s} > -2.
+    x(t) = 2 e^(-3 t) u(t) + e^(-2 t) u(-t), wide cal(R e){s} > -2.
   $
 ]
 
@@ -104,9 +107,44 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 
 == (c)
 
+#solution[
+  Let $sigma$ denote the pole of $X(s)$. Then
+
+  $
+    norm(X(j omega))^2 = 1/(omega^2 + sigma^2),
+  $
+
+  as shown in the figure below.
+
+  // TODO
+  #figure(
+    cetz.canvas({
+      import cetz.draw: *
+      import cetz-plot: *
+
+      // let plot.plot = plot.plot.with(axis-style: "school-book")
+
+      plot.plot(size: (2,2), x-tick-step: none, y-tick-step: none, {
+        plot.add(((0,0), (1,1), (2,.5), (4,3)))
+      })
+    }),
+  )
+]
+
 = 9.26
 
+#solution[
+  From table 9.1, we know that
+
+  $
+    Y(s) = e^(-2 s) X_1(s) dot e^(-3 s) X_2(-s) = e^(-5 s)/(6 + s - s^2).
+  $
+]
+
 = 9.31
+
+#solution[
+]
 
 = 9.35
 
