@@ -116,17 +116,23 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 
   as shown in the figure below.
 
-  // TODO
   #figure(
     cetz.canvas({
       import cetz.draw: *
       import cetz-plot: *
 
-      // let plot.plot = plot.plot.with(axis-style: "school-book")
-
-      plot.plot(size: (2,2), x-tick-step: none, y-tick-step: none, {
-        plot.add(((0,0), (1,1), (2,.5), (4,3)))
-      })
+      plot.plot(
+        size: (8, 2),
+        axis-style: "school-book",
+        x-label: $omega$,
+        y-label: $X(j omega)$,
+        y-min: 0,
+        x-tick-step: none,
+        y-tick-step: none,
+        {
+          plot.add(domain: (-4, 4), x => 1 - 3/(x * x + 4))
+        },
+      )
     }),
   )
 ]
