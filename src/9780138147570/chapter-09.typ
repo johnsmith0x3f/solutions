@@ -108,10 +108,10 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 == (c)
 
 #solution[
-  Let $sigma$ denote the pole of $X(s)$. Then
+  Let $alpha$ and $beta$ denote the pole and zero of $X(s)$, respectively. Then
 
   $
-    norm(X(j omega))^2 = 1/(omega^2 + sigma^2),
+    norm(X(j omega)) = M sqrt((omega^2 + beta^2)/(omega^2 + alpha^2)),
   $
 
   as shown in the figure below.
@@ -149,7 +149,74 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 
 = 9.31
 
+== (a)
+
 #solution[
+  By taking the Laplace transform and simplifying, we obtain
+
+  $
+    H(s) = 1/(s^2 - s - 2).
+  $
+
+  The pole-zero plot of $H(s)$ is shown in the figure below.
+
+  #figure(
+    cetz.canvas({
+      import cetz.draw: *
+      import cetz-plot: *
+
+      set-style(
+        content: (
+          padding: 0.2
+        )
+      )
+
+      line((-3, 0), (3, 0), name: "x-axis")
+      content("x-axis.end", $cal(R e)$, anchor: "north-west")
+
+      line((0, -2), (0, 2), name: "y-axis")
+      content("y-axis.end", $cal(I m)$, anchor: "south-west")
+
+      let cross(x, y) = {
+        line((x - 0.1, y - 0.1), (x + 0.1, y + 0.1))
+        line((x - 0.1, y + 0.1), (x + 0.1, y - 0.1))
+      }
+
+      cross(-1, 0)
+      content((-1, 0), $-1$, anchor: "north")
+
+      cross(2, 0)
+      content((2, 0), $2$, anchor: "north")
+    }),
+  )
+]
+
+== (b)
+
+#solution[
+  The partial fraction expansion of $H(s)$ is
+
+  $
+    H(s) = 1/(3 (s - 2)) - 1/(3 (s + 1)).
+  $
+
+  + If the system is stable, then the ROC has to be $-1 < cal(R e){s} < 2$. Therefore,
+
+    $
+      h(t) = -1/3 e^(2 t) u(-t) - 1/3 e^(-t) u(t).
+    $
+
+  + If the system is causal, then the ROC has to be $2 < cal(R e){s}$. Therefore,
+
+    $
+      h(t) = 1/3 e^(2 t) u(t) - 1/3 e^(-t) u(t).
+    $
+
+  + If the system is neither stable nor causal, then the ROC has to be $cal(R e){s} < -1$. Therefore,
+
+    $
+      h(t) = -1/3 e^(2 t) u(-t) + 1/3 e^(-t) u(-t).
+    $
 ]
 
 = 9.35
