@@ -221,4 +221,21 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 
 = 9.35
 
+== (a)
+
+#solution[
+  Let $w(t)$ denote the center node. Then we have
+
+  $
+    W(s) = 1/s (X(s) + W(s) - 2 + W(s)/s - 1),\
+    Y(s) = s dot W(s) + W(s) - 1 + W(s)/s - 6,
+  $
+
+  which simplifies to
+
+  $
+    Y(s) = (s^2 - s - 1)/(s^2 + s + 1) (X(s) - 3) - 7.
+  $
+]
+
 = 9.40
