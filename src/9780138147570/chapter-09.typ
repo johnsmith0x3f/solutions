@@ -252,4 +252,57 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 
 = 9.40
 
+Taking the unilateral Laplace transform of the equation, we obtain
 
+$
+  s^3 cal(Y)(s) - s^2 y(0^-) - s y'(0^-) - y''(0^-) + \
+  6 s^2 cal(Y)(s) - 6 s y(0^-) - 6 y'(0^-) + 11 s cal(Y)(s) - 11 y(0^-) + 6 cal(Y)(s) = cal(X)(s).
+$
+
+== (a)
+
+#solution[
+  For the zero-state response, we have
+
+  $
+    s^3 cal(Y)(s) + 6 s^2 cal(Y)(s) + 11 s cal(Y)(s) + 6 cal(Y)(s) = cal(X)(s) = 1/(s + 4).
+  $
+
+  Therefore,
+
+  $
+    cal(Y)(s) = 1/((s + 4)(s^3 + 6 s^2 + 11 s + 6)) = 1/(2 (s + 2)) - 1/(2 (s + 3)) - 1/(6 (s + 1)) + 1/(6 (s + 4)).
+  $
+
+  Taking the inverse unilateral Laplace transform, we obtain
+
+  $
+    y(t) = 1/2 e^(-2 t) u(t) - 1/2 e^(-3 t) u(t) - 1/6 e^(-t) u(t) + 1/6 e^(-4 t) u(t).
+  $
+]
+
+== (b)
+
+#solution[
+  For the zero-input response, with the given initial condition, we can obtain
+
+  $
+    cal(Y)(s) = (s^2 + 5 s + 6)/(s^3 + 6 s^2 + 11 s + 6) = 1/(s + 1).
+  $
+
+  Taking the inverse unilateral Laplace transform, we obtain
+
+  $
+    y(t) = e^(-t) u(t).
+  $
+]
+
+== (c)
+
+#solution[
+  The total response is the sum of the zero-state and zero-input responses. Therefore,
+
+  $
+    y(t) = (1/2 e^(-2 t) - 1/2 e^(-3 t) + 5/6 e^(-t) + 1/6 e^(-4 t)) u(t).
+  $
+]
