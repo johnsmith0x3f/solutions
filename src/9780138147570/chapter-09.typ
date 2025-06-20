@@ -25,8 +25,8 @@
   Each of these integrals represents a Laplace transform of the type encountered in Example 9.1. It follows that
 
   $
-    e^(4 t) u(t) &<-->^cal(L) 1/(s + 4), wide cal(R e){s} > -4,\
-    e^(-(5 - 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 + 5 j), wide cal(R e){s} > -5,\
+    e^(4 t) u(t) &<-->^cal(L) 1/(s + 4), wide cal(R e){s} > -4, \
+    e^(-(5 - 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 + 5 j), wide cal(R e){s} > -5, \
     e^(-(5 + 5 j)t) u(t) &<-->^cal(L) 1/(s - 5 - 5 j), wide cal(R e){s} > -5.
   $
 
@@ -224,18 +224,32 @@ Let $R$ denote the ROC of the Laplace transform $X(s)$ of the signal $x(t)$.
 == (a)
 
 #solution[
-  Let $w(t)$ denote the center node. Then we have
+  Let $w(t)$ denote the signal represented by the bottom-middle node. Then the diagram shows that
 
   $
-    W(s) = 1/s (X(s) + W(s) - 2 + W(s)/s - 1),\
-    Y(s) = s dot W(s) + W(s) - 1 + W(s)/s - 6,
+    (dif^2 w(t))/(dif t^2) + 2 (dif w(t))/(dif t) + w(t) = x(t), \
+    (dif^2 w(t))/(dif t^2) - (dif w(t))/(dif t) - 6 w(t) = y(t).
   $
 
-  which simplifies to
+  Hence
 
   $
-    Y(s) = (s^2 - s - 1)/(s^2 + s + 1) (X(s) - 3) - 7.
+    H(s) = Y(s)/X(s) = (Y(s)/W(s))/(X(s)/W(s)) = (s^2 - s - 6)/(s^2 + 2 s + 1).
+  $
+
+  Taking the inverse Laplace transform, we obtain
+
+  $
+    (dif^2 y(t))/(dif t^2) + 2 (dif y(t))/(dif t) + y(t) = (dif^2 x(t))/(dif t^2) - (dif x(t))/(dif t) - 6 x(t).
   $
 ]
 
+== (b)
+
+#solution[
+  From the previous result, the two poles of the system are at $-1$. Since the system is causal, the ROC is $-1 < cal(R e){s}$ and hence includes the $j omega$-axis. Therefore, the system is stable.
+]
+
 = 9.40
+
+
