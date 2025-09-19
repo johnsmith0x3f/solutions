@@ -52,9 +52,35 @@
 
 == P13
 
+#solution[
+  #set enum(numbering: "(a)")
+
+  + $"average delay" = 1 / N (0 + L / R + ... + (N - 1) L / R) = ((N - 1) L) / (2 R) "seconds"$.
+
+  + It takes exactly $N L / R$ seconds to transmit a batch of $N$ packets. Hence the buffer is empty when each batch arrive. Therefore, the average queuing delay across all batches is the same as the average queuing delay for a single batch, whcih is $((N - 1) L) / (2 R)$ seconds.
+]
+
 == P20
 
+#solution[
+  $"throughput" = min{R_s, R_c, R / M}$.
+]
+
 == P25
+
+#solution[
+  #set enum(numbering: "a.")
+
+  + $R dot d_"prop" = 5 "Mbps" dot (20000 "km") / (2.5 dot 10^8 "meters/sec") = 400000 "bits"$.
+
+  + Same as above.
+
+  + The bandwidth-delay product of a link is the maximum number of bits that can be in the link.
+
+  + $"width" = (20000 "km") / (400000 "bits") = 50 "meters/bit"$.
+
+  + $"width" = m / (R dot d_"prop") = s / R$.
+]
 
 == P27
 
