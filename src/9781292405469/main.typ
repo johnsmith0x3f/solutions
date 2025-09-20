@@ -84,4 +84,18 @@
 
 == P27
 
+#solution[
+  In this case, the throughput of the link is $R_s / 2$, so for every two packets sent by the server, only one packet is delivered to the client. Hence packet loss will start occurring at the router after $8$ messages sent by the server.
+]
+
 == P31
+
+#solution[
+  #set enum(numbering: "a.")
+
+  + $d_11 = (10^6 "bits") / (5 "Mbps") = 0.2 "seconds"$, $d_"total" = 3 d_11 = 0.6 "seconds"$.
+
+  + $d_21 = (10000 "bits") / (5 "Mbps") = 0.002 "seconds"$, $d_22 = 2 d_21 = 0.004 "seconds"$.
+
+  + $d_"file" = 102 d_21 = 0.204 "seconds"$, way smaller than the first answer. This shows that message segmentation is more efficient.
+]
